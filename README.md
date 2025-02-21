@@ -7,6 +7,8 @@ This project implements a machine learning pipeline for network traffic attack c
 ## Current Model Performance
 
 ### Metrics Summary
+![dos_detection_visualization](https://github.com/user-attachments/assets/98892a7c-f65d-49ab-8a73-92608d49760c)
+
 - **Accuracy**: 0.7482 (74.82%)
 - **Precision**: 0.7679 (76.79%)
 - **Recall**: 1.0 (100%)
