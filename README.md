@@ -85,8 +85,6 @@ Current implementation includes:
 4. Generate visualizations:
    ```julia
 
-   ![dos_detection_visualization](https://github.com/user-attachments/assets/67c7206e-7799-49ef-a715-705e02229dcb)
-
    julia> include("visualize_results.jl")
    julia> main()
    ```
@@ -98,6 +96,7 @@ The visualization script generates comprehensive plots including:
 - Confusion matrix visualization
 - Request rate patterns
 - Protocol-specific metrics
+   ![dos_detection_visualization](https://github.com/user-attachments/assets/67c7206e-7799-49ef-a715-705e02229dcb)
 
 ## Future Improvements
 1. Feature Engineering:
