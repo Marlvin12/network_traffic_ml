@@ -9,10 +9,7 @@ using CategoricalArrays
 include("Metrics.jl")
 
 """
-Create a Random Forest model for classification.
-
-# Returns
-- `MLJ model`: Configured Random Forest Classifier
+Random Forest model for classification.
 """
 function create_model()
     RandomForestClassifier = @load RandomForestClassifier pkg=DecisionTree
@@ -22,7 +19,7 @@ function create_model()
         max_depth=25,           
         min_samples_split=3,       
         min_samples_leaf=2,        
-        n_subfeatures=-1,        
+        n_subfeatures=-1,     
         sampling_fraction=0.75,    
         rng=42                     
     )
@@ -31,7 +28,7 @@ function create_model()
 end
 
 """
-Evaluate model performance using cross-validation.
+model performance using cross-validation.
 
 # Arguments
 - `model`: MLJ model to evaluate
@@ -45,7 +42,7 @@ function evaluate_model(model, X, y)
     
     y = categorical(y, levels=sort(unique(y)))
     
-    # Set up cross-validation
+    # cross-validation
     rng = StableRNG(42)
     resampling = CV(nfolds=5, shuffle=true)
     
