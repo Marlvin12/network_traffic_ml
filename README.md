@@ -6,21 +6,21 @@ This project implements a machine learning pipeline for detecting Denial of Serv
 ## Current Model Performance
 
 ### Metrics Summary
-- **Accuracy**: 0.7481 (74.81%)
-- **Precision**: 0.773 (77.3%)
-- **Recall**: 1.0 (100%)
-- **F1 Score**: 0.872 (87.2%)
+- **Accuracy**: 0.9849 (98.49%)
+- **Precision**: 0.971 (97.1%)
+- **Recall**: 0.9998 (99.98%)
+- **F1 Score**: 0.9852 (98.52%)
 
 ### Confusion Matrix
-- True Negatives: 316
-- False Positives: 2198
-- False Negatives: 0
-- True Positives: 7486
+- True Negatives: 4835
+- False Positives: 150
+- False Negatives: 1
+- True Positives: 5014
 
 ### Class Distribution
 - Total Samples: 10,000
-- Normal Traffic (0): 2,514 samples (25.14%)
-- DoS Attack (1): 7,486 samples (74.86%)
+- Normal Traffic (0): 4,985 samples (49.85%)
+- DoS Attack (1): 5,015 samples (50.15%)
 
 ## Project Structure
 ```
@@ -30,11 +30,11 @@ project_root/
 │   ├── Preprocessing.jl   # Feature engineering and data preprocessing
 │   ├── ModelTraining.jl   # Random Forest model implementation
 │   ├── Pipeline.jl        # Main pipeline orchestration
-│   ├── Metrics.jl        # Custom evaluation metrics
+│   ├── Metrics.jl         # Custom evaluation metrics
 │   └── Visualizations.jl  # Data and results visualization
-├── main.jl               # Main execution script
-├── visualize_results.jl  # Visualization script
-└── network_traffic.csv   # Dataset
+├── main.jl                # Main execution script
+├── visualize_results.jl   # Visualization script
+└── network_traffic.csv    # Dataset
 ```
 
 ## Features
@@ -46,17 +46,19 @@ Current implementation includes:
 - Automated visualization generation
 
 ## Key Findings
-1. Perfect Recall (1.0):
-   - Model catches all DoS attacks
-   - No false negatives
+1. Excellent Overall Performance:
+   - Near-perfect accuracy (98.49%)
+   - Extremely high F1 score (98.52%)
 
-2. Moderate Precision (0.773):
-   - Some false positives
-   - Room for improvement in normal traffic classification
+2. Near-Perfect Attack Detection:
+   - Outstanding recall (99.98%)
+   - Only 1 missed attack out of 5,015 total attacks
+   - Extremely low false negative rate
 
-3. Class Imbalance Impact:
-   - Dataset is imbalanced (75% attacks)
-   - Affects model's ability to classify normal traffic
+3. Strong Normal Traffic Classification:
+   - High precision (97.1%)
+   - Only 150 false positives out of 4,985 normal samples
+   - Balanced dataset (approximately 50/50 distribution)
 
 ## Technical Requirements
 - Julia 1.11+
@@ -84,7 +86,6 @@ Current implementation includes:
    ```
 4. Generate visualizations:
    ```julia
-
    julia> include("visualize_results.jl")
    julia> main()
    ```
@@ -96,7 +97,8 @@ The visualization script generates comprehensive plots including:
 - Confusion matrix visualization
 - Request rate patterns
 - Protocol-specific metrics
-   ![dos_detection_visualization](https://github.com/user-attachments/assets/67c7206e-7799-49ef-a715-705e02229dcb)
+
+![dos_detection_visualization](https://github.com/user-attachments/assets/2907d3b9-1a1e-4be9-8acb-a0a39234fe2a)
 
 ## Future Improvements
 1. Feature Engineering:
@@ -105,14 +107,14 @@ The visualization script generates comprehensive plots including:
    - Time-based pattern detection
 
 2. Model Optimization:
-   - Address class imbalance
    - Hyperparameter tuning
    - Ensemble methods exploration
+   - Deep learning approaches for comparison
 
 3. System Enhancements:
    - Real-time detection capabilities
    - Enhanced visualization options
-   - Performance optimization
+   - Performance optimization for large-scale deployment
 
 ## Contributing
 Contributions are welcome! Please feel free to submit a Pull Request.
