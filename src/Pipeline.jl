@@ -34,9 +34,22 @@ function run_pipeline(filepath::String)
     # Perform cross-validation and get metrics
     evaluation_results, confusion_matrix = ModelTraining.evaluate_model(model, X, y)
     
+    # Calculate correct accuracy from confusion matrix
+    tn, fp, fn, tp = confusion_matrix
+    manual_accuracy = (tp + tn) / (tp + tn + fp + fn)
+    
+    # Replace any existing accuracy with the correct calculation
+    evaluation_results[:accuracy] = round(manual_accuracy, digits=4)
+    
+    # Remove the mlj_accuracy if it exists
+    if haskey(evaluation_results, :mlj_accuracy)
+        delete!(evaluation_results, :mlj_accuracy)
+    end
+    
+    # Print the evaluation results
     println("\nModel Evaluation Results:")
     for (metric, value) in pairs(evaluation_results)
-        println("$metric: ", value)
+        println("$metric: $value")
     end
     
     return model, evaluation_results, confusion_matrix
